@@ -116,3 +116,23 @@ def plot_horas_retornadas(dados):
 
     st.plotly_chart(fig)
 
+
+
+def display_automation_description(dados):
+    # Obtém a lista de ReleaseNames únicas e ordena em ordem alfabética
+    release_names_ordenadas = sorted(dados['ReleaseName'].unique())
+
+    # Adicione o filtro de ReleaseName
+    release_selecionada = st.selectbox('Selecione uma automação', release_names_ordenadas)
+
+    # Filtrar os dados com base na ReleaseName selecionada
+    dados_filtrados = dados[dados['ReleaseName'] == release_selecionada]
+
+    # Exibir a descrição da ReleaseName selecionada, se houver
+    if not dados_filtrados.empty:
+        descricao = dados_filtrados.iloc[0]['Descrição']
+        st.write(f"Descrição da automação '{release_selecionada}':")
+        st.write(descricao)
+    else:
+        st.write("Nenhuma descrição disponível para a automação selecionada.")
+

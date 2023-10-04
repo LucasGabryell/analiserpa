@@ -15,6 +15,8 @@ dadosRPA = pd.read_csv(dadosRpaCsv)
 st.write("### Dados do RPA:")
 st.write(dadosRPA)
 
+graphicsFunctions.display_automation_description(dadosRPA)
+
 # Barra de seleção para escolher o gráfico
 opcao_grafico = st.selectbox("Escolha o Gráfico", ["Gráfico de Tempo Manual",
                                                    "Gráfico de Tempo de execução RPA (Segundos)",
